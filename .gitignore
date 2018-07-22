@@ -1,0 +1,6 @@
+package/app.db
+__pycache__
+package/__pycache__
+.DS_Store
+.ipynb.checkpoints
+config.py
