@@ -9,6 +9,7 @@ import plotly.graph_objs as go
 
 graphdata = number_of_countries_visited()
 map_dropdown = graphdata[0]['x'][0:5]
+cs = [country.name for country in Country.query.all()]
 
 app.layout = html.Div(children=[
     html.H3("Setlist Stats"),
@@ -22,26 +23,15 @@ app.layout = html.Div(children=[
         }
     ),
     dcc.Dropdown(
-        id='map-selector',
-        options=[
-            {'label': map_dropdown[0], 'value': map_dropdown[0]},
-            {'label': map_dropdown[1], 'value': map_dropdown[1]},
-            {'label': map_dropdown[2], 'value': map_dropdown[2]},
-            {'label': map_dropdown[3], 'value': map_dropdown[3]},
-            {'label': map_dropdown[4], 'value': map_dropdown[4]}
-        ],
-        value = map_dropdown[0]
+        id = 'map-selector',
+        options = [{'label':mapdrop, 'value':mapdrop} for mapdrop in map_dropdown],
+        value = 'Please select an artist.'
     ),
     html.H3("Tour Info"),
     html.Div(id='map-container'),
     dcc.Dropdown(
         id='selector',
-        options=[
-            {'label': 'United States', 'value': 'United States'},
-            {'label': 'United Kingdom', 'value': 'United Kingdom'},
-            {'label': 'Japan', 'value': 'Japan'},
-            {'label': 'France', 'value': 'France'}
-        ],
+        options=[{'label': c, 'value': c} for c in cs],
         value="United States"
     ),
     html.H3("Top Concert Venues for Chosen Country"),

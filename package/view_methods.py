@@ -45,6 +45,13 @@ def lat_lng(art):
         lng.append(item[1])
     return lat, lng
 
+def list_of_venues(art):
+   venue_list = []
+   for show in Show.query.all():
+       if art == show.songs[0].artist.name:
+           venue_list.append(show.date + ‘, ’ + show.venue + ‘, ’ + show.city)
+   return venue_list
+
 def make_map(art):
     data = [
     go.Scattermapbox(
@@ -54,13 +61,15 @@ def make_map(art):
         marker=dict(
             size=8
         ),
-        text=['Montreal'],
+        text = list_of_venues(art),
     )
     ]
     layout = go.Layout(
-        autosize=True,
-        hovermode='closest',
-        mapbox=dict(
+        autosize = False,
+        hovermode = 'closest',
+        width = 800,
+        height = 500,
+        mapbox = dict(
             accesstoken=mapbox_access_token,
             bearing=0,
             center=dict(
@@ -72,24 +81,3 @@ def make_map(art):
     ),
     )
     return [dcc.Graph(id = 'map', figure = dict(data=data, layout=layout))]
-
-
-# def make_map(art):
-#     return dcc.Graph(
-#            [{'data':
-#            [go.Scattermapbox(
-#            lat = lat_lng(art)[0],
-#            lon = lat_lng(art)[1],
-#            mode = 'markers',
-#            marker = dict(size = 8),
-#            text = ['Montreal']
-#            )],
-#            'layout': go.Layout(
-#                    autosize = True,
-#                    hovermode = 'closest',
-#                    mapbox = dict(accesstoken = mapbox_access_token,
-#                         bearing = 0,
-#                         center = dict(lat = 30, lon = -210),
-#                         pitch = 0,
-#                         zoom = 0.2)
-#                        )}])
