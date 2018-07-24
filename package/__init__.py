@@ -9,6 +9,6 @@ server.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(server)
-from package.models import *
 
 app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard')
+from package.layout import app

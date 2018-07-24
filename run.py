@@ -1,6 +1,7 @@
-from package import *
-from package.layout import *
-from package.etl import *
+
+from package import app
+# from package.layout import *
+# from package.etl import *
 
 if __name__ == '__main__':
     # adds in external css to style the table

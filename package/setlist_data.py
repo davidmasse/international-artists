@@ -20,4 +20,5 @@ def get_data(number_of_pages, year):
             data.append(item)
     return data
 
-data = get_data(10, 2017)
+data = get_data(51, 2017)
+print('done getting data')
