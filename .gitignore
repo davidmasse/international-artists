@@ -2,5 +2,10 @@ package/app.db
 __pycache__
 package/__pycache__
 .DS_Store
-.ipynb.checkpoints
+.ipynb_checkpoints
+package.ipynb_checkpoints
 config.py
+Untitled.ipynb
+.gitignore
+package/queries.py
+package/traces.py

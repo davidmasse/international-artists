@@ -49,7 +49,7 @@ def list_of_venues(art):
    venue_list = []
    for show in Show.query.all():
        if art == show.songs[0].artist.name:
-           venue_list.append(show.date + ‘, ’ + show.venue + ‘, ’ + show.city)
+           venue_list.append(show.date + ', ' + show.venue + ', ' + show.city)
    return venue_list
 
 def make_map(art):
